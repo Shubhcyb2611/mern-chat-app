@@ -1,0 +1,23 @@
+{
+  "name": "mern-chat-app",
+  "version": "1.0.0",
+  "description": "A dynamic chat platform built on the MERN stack, facilitating seamless communication and collaboration in real-time",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shubhcyb2611/mern-chat-app.git"
+  },
+  "author": "Shubhcyb2611",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shubhcyb2611/mern-chat-app/issues"
+  },
+  "homepage": "https://github.com/Shubhcyb2611/mern-chat-app#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
