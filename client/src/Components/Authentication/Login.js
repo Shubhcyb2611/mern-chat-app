@@ -62,7 +62,7 @@ const Login = () => {
           setPassword("123456");
         }}
       >
-        - as Guest
+        Login as Guest
       </Button>
     </VStack>
   );

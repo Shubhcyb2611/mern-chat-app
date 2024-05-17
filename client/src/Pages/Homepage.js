@@ -25,7 +25,6 @@ const Homepage = () => {
         borderRadius={"10px"}
       >
         <Text
-          fontFamily={""}
           fontSize={"25px"}
           fontWeight={"700"}
           textAlign={"center"}
