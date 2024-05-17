@@ -1,6 +1,7 @@
 import express from "express";
 import { Logger } from "./logger.js";
 import { connectDatabase } from "./db.config.js";
+import { appRouter } from "../interfaces/routers/index.js";
 
 export class Server {
   constructor(config) {
