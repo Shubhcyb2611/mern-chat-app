@@ -21,6 +21,8 @@ const Signup = () => {
 
   const postDetails = (pics) => {};
 
+  const submitHandler = () => {};
+
   return (
     <VStack spacing={"5px"}>
       <FormControl id="name" isRequired>
@@ -81,7 +83,12 @@ const Signup = () => {
         />
       </FormControl>
 
-      <Button colorScheme="teal" width={"100%"} marginBlockStart={"25px"}>
+      <Button
+        colorScheme="teal"
+        width={"100%"}
+        marginBlockStart={"25px"}
+        onClick={submitHandler}
+      >
         Sign Up
       </Button>
     </VStack>
