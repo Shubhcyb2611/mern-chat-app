@@ -6,6 +6,7 @@ export class Server {
   constructor(config) {
     this.config = config;
     this.app = express();
+    this.app.use("/api", appRouter);
 
     this.app.use(express.json());
   }
