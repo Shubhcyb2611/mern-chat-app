@@ -2,11 +2,11 @@ import asyncHandler from "express-async-handler";
 import { User } from "../../domain/user.js";
 
 export const registerUser = async (req, res) => {
-  console.log(req.body);
-  const user = await User.create({
-    email: "abc@gmail",
-    password: "154fh",
-    name: "shubhi",
-  });
+  const user = await User.create(req.body);
   res.status(200).json(user);
 };
+
+export const getAllUsers = asyncHandler(async (req, res) => {
+  const users = await User.find({});
+  res.status(200).json(users);
+});
