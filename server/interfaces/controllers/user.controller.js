@@ -22,3 +22,8 @@ export const deleteUsers = asyncHandler(async (req, res) => {
   const user = await User.findByIdAndDelete(req.params.id);
   res.status(204).json(user);
 });
+
+export const loginUser = asyncHandler(async (req, res) => {
+  const user = await User.findOne({ email: req.body.email });
+  if(user && (user.pa))
+});

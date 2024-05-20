@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Shubhcyb2611/mern-chat-app#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "class-transformer": "^0.5.1",
     "dotenv": "^16.4.5",
