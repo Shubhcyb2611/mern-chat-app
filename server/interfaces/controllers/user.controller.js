@@ -10,3 +10,10 @@ export const getAllUsers = asyncHandler(async (req, res) => {
   const users = await User.find({});
   res.status(200).json(users);
 });
+
+export const updateUsers = asyncHandler(async (req, res) => {
+  const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
+  res.status(202).json(user);
+});
