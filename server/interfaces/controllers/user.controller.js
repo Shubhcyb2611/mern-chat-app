@@ -17,3 +17,7 @@ export const updateUsers = asyncHandler(async (req, res) => {
   });
   res.status(202).json(user);
 });
+export const deleteUsers = asyncHandler(async (req, res) => {
+  const user = await User.findByIdAndDelete(req.params.id);
+  res.status(204).json(user);
+});
