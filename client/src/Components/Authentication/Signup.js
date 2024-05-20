@@ -99,6 +99,7 @@ const Signup = () => {
         config
       );
       if (this.data === undefined) {
+        console.log("jgnlfk;jlkgh;jhgkjlgj,");
         return;
       }
       toast({
@@ -110,7 +111,6 @@ const Signup = () => {
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
-      history.pushState("/chats");
     } catch (error) {
       toast({
         title: "Error occured",
