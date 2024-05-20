@@ -1,5 +1,6 @@
 import asyncHandler from "express-async-handler";
 import { User } from "../../domain/user.js";
+import { generateToken } from "../../config/jwt.config.js";
 
 export const registerUser = async (req, res) => {
   const user = await User.create(req.body);
@@ -26,8 +27,12 @@ export const deleteUsers = asyncHandler(async (req, res) => {
 export const loginUser = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
   if (user && user.matchPassword(req.body.password)) {
-    res.json({ ...user, token: generateToken(user._id) });
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      profilePic: user.profilePic,
+      token: generateToken(user._id),
+    });
   }
 });
-
-
