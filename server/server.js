@@ -7,8 +7,17 @@ import {
   errorHandler,
   notFound,
 } from "./interfaces/middleware/errorHandler.js";
+import cors from "cors";
+import bodyParser from "body-parser";
 
 const app = express();
+const corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api", appRouter);
 app.use(notFound);

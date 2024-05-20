@@ -98,6 +98,9 @@ const Signup = () => {
         { name, email, password, pic },
         config
       );
+      if (this.data === undefined) {
+        return;
+      }
       toast({
         title: "Registeration successful",
         status: "success",
