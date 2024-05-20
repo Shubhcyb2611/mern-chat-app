@@ -20,7 +20,7 @@ userModel.methods.matchPassword = async function (password) {
 };
 
 userModel.pre("save", async function (next) {
-  if (!this.modified) {
+  if (!this.isModified) {
     next();
   }
   this.password = await bcrypt.hash(this.password, 12);
