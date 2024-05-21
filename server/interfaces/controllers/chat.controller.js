@@ -79,3 +79,15 @@ export const createGroupChat = async (req, res) => {
 
   res.status(200).json(detailedGroupChat);
 };
+
+export const renameGroupChat = async (req, res) => {
+  const updatedChat = await Chat.findByIdAndUpdate(
+    req.params.id,
+    { chatName: req.body.chatName },
+    { new: true }
+  )
+    .populate("users", "-password -__v -createdAt -updatedAt")
+    .populate("groupAdmin", "-password -__v -createdAt -updatedAt");
+
+  res.status(200).json(updatedChat);
+};
