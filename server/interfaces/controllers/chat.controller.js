@@ -60,7 +60,9 @@ export const fetchChats = async (req, res) => {
 export const createGroupChat = async (req, res) => {
   const users = JSON.parse(req.body.users); //FE sends users array in stringify
 
-  if (users.length < 2) throw new Error("404::More than 2 users are required");
+  if (users.length < 2) {
+    return res.status(404).json("More than 2 users are required");
+  }
 
   users.push(req.user); //in order to add the logged in user too
 
