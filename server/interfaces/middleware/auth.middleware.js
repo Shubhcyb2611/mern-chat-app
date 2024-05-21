@@ -9,3 +9,6 @@ export const userDeserializer = async (req, res, next) => {
   req.user = await User.findById(payload.id);
   return next();
 };
+
+//next() is used if you want to execute the next lines of code
+//return next() simply move you out the callback , and lines after it becomes unreachable
