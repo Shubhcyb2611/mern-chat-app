@@ -96,3 +96,31 @@ export const deleteGroupChat = async (req, res) => {
   await Chat.findByIdAndDelete(req.params.id);
   res.status(200).end();
 };
+
+export const addToGroup = async (req, res) => {
+  const added = await Chat.findByIdAndUpdate(
+    req.body.id,
+    {
+      $push: { users: req.body.userId },
+    },
+    { new: true }
+  )
+    .populate("users", "-password -__v -createdAt -updatedAt")
+    .populate("groupAdmin", "-password -__v -createdAt -updatedAt");
+
+  res.json(added);
+};
+
+export const removeToGroup = async (req, res) => {
+  const removed = await Chat.findByIdAndUpdate(
+    req.body.id,
+    {
+      $pull: { users: req.body.userId },
+    },
+    { new: true }
+  )
+    .populate("users", "-password -__v -createdAt -updatedAt")
+    .populate("groupAdmin", "-password -__v -createdAt -updatedAt");
+
+  res.json(removed);
+};
