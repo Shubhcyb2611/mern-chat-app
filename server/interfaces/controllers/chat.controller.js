@@ -24,8 +24,6 @@ export const createChat = async (req, res) => {
     select: "name pic email",
   });
 
-  console.log(existingChat);
-
   if (existingChat.length > 0) {
     res.status(200).json(existingChat[0]);
   } else {
