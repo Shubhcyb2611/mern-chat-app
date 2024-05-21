@@ -11,6 +11,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import { userDeserializer } from "./interfaces/middleware/auth.middleware.js";
 
+connectDatabase();
 const app = express();
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -21,10 +22,11 @@ app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(userDeserializer);
+
 app.use("/api", appRouter);
 app.use(notFound);
 app.use(errorHandler);
-connectDatabase();
+
 app.listen(PORT, () => {
   Logger.info(`🚀: Server started on http://localhost:` + PORT);
   Logger.info(`📝: Serving docs on http://localhost:${PORT}/api/docs`);

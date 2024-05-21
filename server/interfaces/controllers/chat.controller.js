@@ -12,5 +12,9 @@ export const createChat = async (req, res) => {
     isGroupChat: false,
     users: [req.user._id, userId],
   });
-  res.json(chat);
+  const detailedChat = await Chat.findOne({ _id: chat._id }).populate(
+    "users",
+    "-password"
+  );
+  res.json(detailedChat);
 };
