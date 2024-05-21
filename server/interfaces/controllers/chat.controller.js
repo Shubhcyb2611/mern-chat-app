@@ -56,3 +56,24 @@ export const fetchChats = async (req, res) => {
       res.status(200).json(results);
     });
 };
+
+export const createGroupChat = async (req, res) => {
+  const users = JSON.parse(req.body.users); //FE sends users array in stringify
+
+  if (users.length < 2) throw new Error("404::More than 2 users are required");
+
+  users.push(req.user); //in order to add the logged in user too
+
+  const groupChat = await Chat.create({
+    chatName: req.body.chatName,
+    users: users,
+    isGroupChat: true,
+    groupAdmin: req.user,
+  });
+
+  const detailedGroupChat = await Chat.findOne({ _id: groupChat._id })
+    .populate("users", "-password -__v -createdAt -updatedAt")
+    .populate("groupAdmin", "-password -__v -createdAt -updatedAt");
+
+  res.status(200).json(detailedGroupChat);
+};
