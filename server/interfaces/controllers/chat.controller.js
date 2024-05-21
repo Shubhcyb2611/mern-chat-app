@@ -91,3 +91,8 @@ export const renameGroupChat = async (req, res) => {
 
   res.status(200).json(updatedChat);
 };
+
+export const deleteGroupChat = async (req, res) => {
+  await Chat.findByIdAndDelete(req.params.id);
+  res.status(200).end();
+};
