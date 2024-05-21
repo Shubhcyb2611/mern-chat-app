@@ -9,6 +9,7 @@ import {
 } from "./interfaces/middleware/errorHandler.js";
 import cors from "cors";
 import bodyParser from "body-parser";
+import { userDeserializer } from "./interfaces/middleware/auth.middleware.js";
 
 const app = express();
 const corsOptions = {
@@ -19,6 +20,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(userDeserializer);
 app.use("/api", appRouter);
 app.use(notFound);
 app.use(errorHandler);
