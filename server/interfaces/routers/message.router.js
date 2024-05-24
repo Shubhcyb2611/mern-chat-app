@@ -1,4 +1,8 @@
 import { Router } from "express";
+import {
+  sendMessage,
+  getAllMessages,
+} from "../controllers/message.controller.js";
 
 const router = Router();
 
