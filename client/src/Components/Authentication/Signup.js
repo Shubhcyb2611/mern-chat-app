@@ -14,16 +14,16 @@ import { useHistory } from "react-router-dom";
 
 const Signup = () => {
   const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
+  const toast = useToast();
+  const history = useHistory();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [pic, setPic] = useState();
   const [loading, setLoading] = useState(false);
-  const toast = useToast();
-  const history = useHistory();
-
-  const handleClick = () => setShow(!show);
 
   const postDetails = (pics) => {
     setLoading(true);
@@ -70,7 +70,7 @@ const Signup = () => {
   };
   const submitHandler = async () => {
     setLoading(true);
-    if (!(name || email || password || confirmPassword)) {
+    if (!name || !email || !password || !confirmPassword) {
       toast({
         title: "Please fill all the details",
         status: "warning",
@@ -93,7 +93,7 @@ const Signup = () => {
     }
     try {
       const config = { headers: { "Content-type": "application/json" } };
-      const { data } = await axios.get(
+      const { data } = await axios.post(
         "http://localhost:5000/api/users",
         { name, email, password, pic },
         config
@@ -114,7 +114,6 @@ const Signup = () => {
     } catch (error) {
       toast({
         title: "Error occured",
-        description: error.response.data.mesaage,
         status: "error",
         duration: 5000,
         isClosable: true,
